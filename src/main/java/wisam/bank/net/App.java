@@ -3,7 +3,7 @@ package wisam.bank.net;
 import wisam.bank.net.model.Bank;
 import wisam.bank.net.model.Account;
 
-public class Main {
+public class App {
     public static void main(String[] args) {
         Bank myBank = new Bank("Banque TN");
 

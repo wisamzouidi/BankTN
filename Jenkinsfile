@@ -37,20 +37,20 @@ pipeline {
             }
         }
 
-        stage('Deploy to Tomcat') {
-            steps {
-                echo 'Déploiement de l\'application sur Tomcat.'
-                
-                
-                sh "cp ${WAR_FILE} ${TOMCAT_PATH}/webapps/"
+stage('Deploy to Tomcat') {
+    steps {
+        echo 'Déploiement de l\'application sur Tomcat.'
+        
+        
+        sh "cp target/*.war \$TOMCAT_PATH/webapps/"
 
-                
-                sh """
-                    ${TOMCAT_PATH}/bin/shutdown.sh || true
-                    ${TOMCAT_PATH}/bin/startup.sh
-                """
-            }
-        }
+      
+        sh """
+            \$TOMCAT_PATH/bin/shutdown.sh || true
+            \$TOMCAT_PATH/bin/startup.sh
+        """
+    }
+}
     }
 
     post {

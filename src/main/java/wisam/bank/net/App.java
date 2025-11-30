@@ -1,7 +1,7 @@
 package wisam.bank.net;
 
-import wisam.bank.net.model.Bank;
-import wisam.bank.net.model.Account;
+import wisam.bank.net.Bank;
+import wisam.bank.net.Account;
 
 public class App {
     public static void main(String[] args) {

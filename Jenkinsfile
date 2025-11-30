@@ -45,10 +45,8 @@ stage('Deploy to Tomcat') {
         sh "cp ${WAR_FILE} \$TOMCAT_PATH/webapps/"
 
       
-        sh """
-sudo ${TOMCAT_PATH}/bin/shutdown.sh || true
-sudo ${TOMCAT_PATH}/bin/startup.sh
-        """
+sh "sudo /opt/tomcat/latest/bin/shutdown.sh || true"
+sh "sudo /opt/tomcat/latest/bin/startup.sh"
     }
 }
     }

@@ -18,7 +18,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Compilation et packaging du projet...'
-                sh 'mvn clean install package'
+  
+                sh 'mvn clean install package -X' // -X pour logs détaillés
             }
         }
 

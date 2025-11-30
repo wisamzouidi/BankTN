@@ -1,15 +1,14 @@
 pipeline {
     agent any
 
-
-   tools {
+    tools {
         maven 'Maven3'
     }
 
-        environment {
-        TOMCAT_PATH = "/opt/tomcat" 
+    environment {
+        TOMCAT_PATH = "/opt/tomcat/latest" 
+        WAR_FILE = "target/banktn-1.0-SNAPSHOT.war" 
     }
-
 
     stages {
         stage('Checkout') {
@@ -22,8 +21,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Compilation et packaging du projet...'
-  
-                sh 'mvn install package'
+                sh 'mvn clean package'
             }
         }
 
@@ -39,22 +37,28 @@ pipeline {
             }
         }
 
-
-
         stage('Deploy to Tomcat') {
             steps {
                 echo 'Déploiement de l\'application sur Tomcat.'
-                sh "cp target/*.war ${TOMCAT_PATH}"
+                
+                
+                sh "cp ${WAR_FILE} ${TOMCAT_PATH}/webapps/"
+
+                
+                sh """
+                    ${TOMCAT_PATH}/bin/shutdown.sh || true
+                    ${TOMCAT_PATH}/bin/startup.sh
+                """
             }
         }
     }
 
     post {
         success {
-            echo 'Pipeline exécuté avec succès !'
+            echo 'Pipeline exécuté avec succès'
         }
         failure {
-            echo 'La pipeline a échoué !'
+            echo 'La pipeline a échoué'
         }
     }
 }

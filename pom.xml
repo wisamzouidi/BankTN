@@ -22,7 +22,7 @@
         <!-- SonarQube -->
         <sonar.projectKey>banktn</sonar.projectKey>
         <sonar.projectName>BankTN</sonar.projectName>
-        <sonar.host.url>http://192.168.1.50:9000</sonar.host.url>
+        <sonar.host.url>http://localhost:9000</sonar.host.url>
         <sonar.login>sqp_xxxxxxxxxxxxxxxxxxxxxxxxx</sonar.login>
     </properties>
 

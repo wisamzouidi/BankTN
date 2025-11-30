@@ -1,30 +1,37 @@
 package wisam.bank.net;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Bank {
+    private String name;
+    private List<Account> accounts;
 
-    private double balance;
-
-    // Constructeur
-    public Bank(double initialBalance) {
-        this.balance = initialBalance;
+    public Bank(String name) {
+        this.name = name;
+        this.accounts = new ArrayList<>();
     }
 
-    // 1) Déposer de l'argent
-    public void deposit(double amount) {
-        if (amount > 0) {
-            balance += amount;
+    // Ajouter un compte
+    public void addAccount(Account account) {
+        accounts.add(account);
+    }
+
+    // Afficher tous les comptes
+    public void showAccounts() {
+        System.out.println("=== " + name + " ===");
+        for (Account acc : accounts) {
+            acc.showInfo();
         }
     }
 
-    // 2) Retirer de l'argent
-    public void withdraw(double amount) {
-        if (amount > 0 && balance >= amount) {
-            balance -= amount;
+    // Trouver un compte par numéro
+    public Account findAccount(String accountNumber) {
+        for (Account acc : accounts) {
+            if (acc.getAccountNumber().equals(accountNumber)) {
+                return acc;
+            }
         }
-    }
-
-    // 3) Lire le solde
-    public double getBalance() {
-        return balance;
+        return null;
     }
 }

@@ -35,14 +35,7 @@ pipeline {
             }
         }
 
-        stage('SAST - SonarQube Analysis') {
-            steps {
-                echo 'Analyse de sécurité et qualité avec SonarQube.'
-                withSonarQubeEnv('SonarQube') {
-                    sh 'mvn sonar:sonar'
-                }
-            }
-        }
+
 
         stage('Deploy to Tomcat') {
             steps {

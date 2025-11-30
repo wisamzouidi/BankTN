@@ -46,8 +46,9 @@ stage('Deploy to Tomcat') {
 
       
         sh """
-            \$TOMCAT_PATH/bin/shutdown.sh || true
-            \$TOMCAT_PATH/bin/startup.sh
+sh "sudo ${TOMCAT_PATH}/bin/shutdown.sh || true"
+sh "sudo ${TOMCAT_PATH}/bin/startup.sh"
+
         """
     }
 }

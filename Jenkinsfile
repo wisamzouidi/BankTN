@@ -19,7 +19,7 @@ pipeline {
             steps {
                 echo 'Compilation et packaging du projet...'
   
-                sh 'mvn clean install package -X' // -X pour logs détaillés
+                sh 'mvn clean package' 
             }
         }
 

@@ -10,6 +10,7 @@
     <artifactId>banktn</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>banktn</name>
+    <packaging>war</packaging>
     <url></url>
 
     <properties>

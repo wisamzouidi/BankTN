@@ -6,6 +6,10 @@ pipeline {
         maven 'Maven3'
     }
 
+        environment {
+        TOMCAT_PATH = "/opt/tomcat" 
+    }
+
 
     stages {
         stage('Checkout') {

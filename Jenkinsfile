@@ -41,14 +41,13 @@ stage('Deploy to Tomcat') {
     steps {
         echo 'Déploiement de l\'application sur Tomcat.'
         
-        
-        sh "cp target/*.war \$TOMCAT_PATH/webapps/"
+      
+        sh "cp ${WAR_FILE} \$TOMCAT_PATH/webapps/"
 
       
         sh """
-sh "sudo ${TOMCAT_PATH}/bin/shutdown.sh || true"
-sh "sudo ${TOMCAT_PATH}/bin/startup.sh"
-
+sudo ${TOMCAT_PATH}/bin/shutdown.sh || true
+sudo ${TOMCAT_PATH}/bin/startup.sh
         """
     }
 }

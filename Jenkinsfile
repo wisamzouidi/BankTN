@@ -37,17 +37,17 @@ pipeline {
             }
         }
 
-stage('Deploy to Tomcat') {
-    steps {
-        echo 'Déploiement de l\'application sur Tomcat.'
+        stage('Deploy to Tomcat') {
+            steps {
+                echo 'Déploiement de l\'application sur Tomcat.'
 
-        sh "cp ${WAR_FILE} \$TOMCAT_PATH/webapps/"
+                sh "cp ${WAR_FILE} \$TOMCAT_PATH/webapps/"
 
-        
-        sh "sudo ${TOMCAT_PATH}/bin/shutdown.sh || true"
-        sh "sudo ${TOMCAT_PATH}/bin/startup.sh"
-    }
-}
+                
+                sh "sudo ${TOMCAT_PATH}/bin/shutdown.sh || true"
+                sh "sudo ${TOMCAT_PATH}/bin/startup.sh"
+            }
+        }
 
     }
 
